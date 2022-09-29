@@ -1,0 +1,85 @@
+<%- include('template/header') %>
+
+
+
+<section class="home" id="home" style="padding-top: 5%;">
+
+        <table class="table table-dark table-bordered table-striped  mt-5 text-white text-center" id="listaArticulos">
+            <thead>
+                <th scope="col" class="articulo">Evento</th>
+                <th scope="col">Lugar</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Hora</th>
+                <th scope="col">Acciones</th>
+            </thead>
+            <ul id="listaArticulos">
+
+                <% rows.forEach(element=> { %>
+
+                    <tbody id="articulo">
+                        <td class="h2">
+                            <%= element.nombre_evento %>
+                        </td>
+                        <td class="h2">
+                            <%= element.lugar_evento %>
+                        </td>
+                        <td class="h2">
+                            <%= element.fecha_evento %>
+                        </td>
+                        <td class="h2">
+                            <%= element.hora_evento %>
+                        </td>
+                        <td>
+                            <a href="/yourevent/myEvents/updateEvents/<%= element.id_evento %>"
+                                class="btn btn-outline bg-primary text-white">
+                                EDITAR
+                            </a>
+                            <a href="/yourevent/myEvents/delete/<%= element.id_evento %>"
+                                onclick="return confirm('¿esta seguro de elimar el evento <%=element.nombre_evento %>')"
+                                class="btn btn-outline bg-danger text-white">
+                                ELIMINAR
+                            </a>
+                        </td>
+                    </tbody>
+            </ul>
+
+            <% }); %>
+
+        </table>
+
+        </table>
+    
+        </section>
+
+
+
+ 
+
+
+    <%- include('template/footer.ejs') %>
+
+        <script>
+            document.addEventListener("keyup", e => {
+
+                if (e.target.matches("#buscador")) {
+
+                    if (e.key === "Escape") e.target.value = ""
+
+                    document.querySelectorAll("#articulo").forEach(fruta => {
+
+                        fruta.textContent.toLowerCase().includes(e.target.value.toLowerCase())
+                            ? fruta.classList.remove("filtro")
+                            : fruta.classList.add("filtro")
+                    })
+
+                }
+
+
+            })
+        </script>
+
+        <style>
+            .filtro {
+                display: none;
+            }
+        </style>

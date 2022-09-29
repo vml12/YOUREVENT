@@ -1,0 +1,30 @@
+<%- include('template/header.ejs') %>
+
+    <% rows.forEach(usuarios=> { %>
+
+        <div class="mt-6 ml-5" style="display: inline-block;">
+            <div class="card text-center" style="width: 18rem">
+                <img src="<%= usuarios.imagenUser %> " class="card-img-top rounded-circle-2" alt="...">
+                <div class="card-body text-center">
+                    <h5 class="card-title">
+                        <p class="text-center">
+                            <%= usuarios.nombre_evento %>
+                        </p>
+                    </h5>
+                    <p class="card-text">
+                        Lugar: <%= usuarios.lugar_evento %>
+                    </p>
+                    <p class="card-text">
+                        Fecha: <%= usuarios.fecha_evento %>
+                    </p>
+                    <p class="card-text">
+                        Hora: <%= usuarios.hora_evento %>
+                    </p>
+                </div>
+                <form action="/yourevent/onRegist" method="post">
+                    <button>registrarme</button>
+                </form>
+            </div>
+        </div>
+        <% }); %>
+            <%- include('template/footer.ejs') %>

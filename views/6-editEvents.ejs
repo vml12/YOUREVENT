@@ -1,0 +1,48 @@
+<%- include("template/header") %>
+
+    <% if (userEdit) { %>
+
+        <form action="/yourevent/myEventsUpdate" method="post">
+            <input id="id" name="id_evento" value="<%= userEdit.id_evento %> ">
+            <div class="card-front">
+                <div class="center-wrap">
+                    <div class="section text-center">
+                        <h4 class="mb-4 pb-3">Crea tu evento</h4>
+                        <form action="/yourevent/myEventsCreate" method="post">
+
+                            <div class="form-group">
+                                <input type="text" name="nombre_evento" class="form-style"
+                                    placeholder="Nombre del evento" id="logemail"  value=" <%= userEdit.nombre_evento %>  ">
+                            </div>
+
+                            <div class="form-group mt-2">
+                                <input type="text" name="lugar_evento" class="form-style" placeholder="Lugar del evento"
+                                    id="logpass"   value=" <%= userEdit.lugar_evento %> ">
+                            </div>
+
+                            <div class="form-group mt-2">
+                                <input type="date" name="fecha_evento" class="form-style" placeholder="Fecha de evento"
+                                    id="logpass"   value=" <%= userEdit.fecha_evento %>  ">
+                            </div>
+
+                            <div class="form-group mt-2">
+                                <input type="time" name="hora_evento" class="form-style" placeholder="Hora del evento"
+                                    id="logpass"  value=" <%= userEdit.hora_evento %>  ">
+                            </div>
+
+                            <button class="btn mt-4">Editar!</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
+        <style>
+            input{
+                text-align: center;
+            }
+        </style>
+
+        <% } %>
+            <%- include('template/footer.ejs') %>
